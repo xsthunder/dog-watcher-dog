@@ -307,7 +307,6 @@ public class BluetoothChatFragment extends Fragment {
                     // construct a string from the valid bytes in the buffer
                     final String MUSIC = "music";
                     String readMessage = new String(readBuf, 0, msg.arg1);
-                    android.util.Log.i(TAG, String.format("handleMessage: %d %b", readMessage, readMessage.equals(MUSIC)));
                     if(readMessage.equals(MUSIC)){
                         PlayMusic playmusic =new PlayMusic(getActivity());
                         playmusic.onClick(null);
