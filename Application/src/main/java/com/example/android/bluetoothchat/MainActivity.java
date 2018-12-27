@@ -76,12 +76,14 @@ public class MainActivity extends SampleActivityBase {
             transaction.replace(R.id.sample_content_fragment, fragment);
             transaction.commit();
         }
+
         /**
          * following is code from https://github.com/oncealong/FirstLineOfAndroid_Version2/blob/03e6964416cb9850e894b2bbd1252193ba2ea5d1/chapter8/CameraAlbumTest/app/src/main/java/com/example/cameraalbumtest/MainActivity.java#L45
          **/
-
         Button takePhoto = (Button) findViewById(R.id.take_photo);
         picture = (ImageView) findViewById(R.id.picture);
+        Button testButton = (Button) findViewById(R.id.test_button);
+        testButton.setOnClickListener(new PlayMusic(this));
         takePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
