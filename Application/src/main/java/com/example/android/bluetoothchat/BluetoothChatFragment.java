@@ -39,6 +39,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -304,7 +305,13 @@ public class BluetoothChatFragment extends Fragment {
                 case Constants.MESSAGE_READ:
                     byte[] readBuf = (byte[]) msg.obj;
                     // construct a string from the valid bytes in the buffer
+                    final String MUSIC = "music";
                     String readMessage = new String(readBuf, 0, msg.arg1);
+                    android.util.Log.i(TAG, String.format("handleMessage: %d %b", readMessage, readMessage.equals(MUSIC)));
+                    if(readMessage.equals(MUSIC)){
+                        PlayMusic playmusic =new PlayMusic(getActivity());
+                        playmusic.onClick(null);
+                    }
                     mConversationArrayAdapter.add(mConnectedDeviceName + ":  " + readMessage);
                     break;
                 case Constants.MESSAGE_DEVICE_NAME:
